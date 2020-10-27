@@ -32,6 +32,16 @@ class Country
      */
     private $dateInsert;
 
+    public function toArray(): array
+    {
+        return [
+            'id'         => $this->getId(),
+            'code'       => $this->getCode(),
+            'name'       => $this->getName(),
+            'dateInsert' => $this->getDateInsert()
+        ];
+    }
+
     public function getId(): ?int
     {
         return $this->id;
