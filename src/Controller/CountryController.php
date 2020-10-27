@@ -54,7 +54,6 @@ class CountryController extends AbstractController
                 'id'         => $country->getId(),
                 'code'       => $country->getCode(),
                 'name'       => $country->getName(),
-                'dateInsert' => $country->getDateInsert(),
             ];
         }
 
