@@ -3,39 +3,39 @@
 {% block title %}Blog index{% endblock %}
 
 {% block body %}
-    <h1>Blog index</h1>
+    <h1 >Blog index</h1 >
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>DateBlogged</th>
-                <th>DateInsert</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <table class="table" >
+        <thead >
+        <tr >
+            <th >Id</th >
+            <th >Visit</th >
+            <th >Title</th >
+            <th >Description</th >
+            <th >DateBlogged</th >
+            <th >actions</th >
+        </tr >
+        </thead >
+        <tbody >
         {% for blog in blogs %}
-            <tr>
-                <td>{{ blog.id }}</td>
-                <td>{{ blog.title }}</td>
-                <td>{{ blog.description }}</td>
-                <td>{{ blog.dateBlogged ? blog.dateBlogged|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ blog.dateInsert ? blog.dateInsert|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('blog_show', {'id': blog.id}) }}">show</a>
-                    <a href="{{ path('blog_edit', {'id': blog.id}) }}">edit</a>
-                </td>
-            </tr>
+            <tr >
+                <td >{{ blog.id }}</td >
+                <td >{{ blog.visit.title }}</td >
+                <td >{{ blog.title }}</td >
+                <td >{{ blog.description }}</td >
+                <td >{{ blog.dateBlogged ? blog.dateBlogged|date('Y-m-d H:i:s') : '' }}</td >
+                <td >
+                    <a href="{{ path('blog_show', {'id': blog.id}) }}" >show</a >
+                    <a href="{{ path('blog_edit', {'id': blog.id}) }}" >edit</a >
+                </td >
+            </tr >
         {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+            <tr >
+                <td colspan="6" >no records found</td >
+            </tr >
         {% endfor %}
-        </tbody>
-    </table>
+        </tbody >
+    </table >
 
-    <a href="{{ path('blog_new') }}">Create new</a>
+    <a href="{{ path('blog_new') }}" >Create new</a >
 {% endblock %}

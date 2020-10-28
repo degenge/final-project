@@ -2,10 +2,15 @@
 
 {% block title %}New Visit{% endblock %}
 
+{% block page_title %}
+    <div class="col-10" >
+        <h2 class="text-dark" >Create new Visit</h2 >
+    </div >
+    <div class="col-2 text-right" >
+        <a href="{{ path('visit_index') }}" class="btn btn-secondary d-inline-block align-middle" >Back to list</a >
+    </div >
+{% endblock %}
+
 {% block body %}
-    <h1>Create new Visit</h1>
-
     {{ include('visit/_form.html.twig') }}
-
-    <a href="{{ path('visit_index') }}">back to list</a>
 {% endblock %}

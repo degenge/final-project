@@ -60,59 +60,6 @@ class Visit
         $this->blogs = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getDateVisitedFrom(): ?\DateTimeInterface
-    {
-        return $this->dateVisitedFrom;
-    }
-
-    public function setDateVisitedFrom(\DateTimeInterface $dateVisitedFrom): self
-    {
-        $this->dateVisitedFrom = $dateVisitedFrom;
-
-        return $this;
-    }
-
-    public function getDateVisitedTill(): ?\DateTimeInterface
-    {
-        return $this->dateVisitedTill;
-    }
-
-    public function setDateVisitedTill(\DateTimeInterface $dateVisitedTill): self
-    {
-        $this->dateVisitedTill = $dateVisitedTill;
-
-        return $this;
-    }
-
     public function getDateInserted(): ?\DateTimeInterface
     {
         return $this->dateInserted;
@@ -163,6 +110,70 @@ class Visit
                 $blog->setVisit(null);
             }
         }
+
+        return $this;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id'              => $this->getId(),
+            'title'           => $this->getTitle(),
+            'description'     => $this->getDescription(),
+            'dateVisitedFrom' => $this->getDateVisitedFrom(),
+            'dateVisitedTill' => $this->getDateVisitedTill()
+        ];
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDateVisitedFrom(): ?\DateTimeInterface
+    {
+        return $this->dateVisitedFrom;
+    }
+
+    public function setDateVisitedFrom(\DateTimeInterface $dateVisitedFrom): self
+    {
+        $this->dateVisitedFrom = $dateVisitedFrom;
+
+        return $this;
+    }
+
+    public function getDateVisitedTill(): ?\DateTimeInterface
+    {
+        return $this->dateVisitedTill;
+    }
+
+    public function setDateVisitedTill(\DateTimeInterface $dateVisitedTill): self
+    {
+        $this->dateVisitedTill = $dateVisitedTill;
 
         return $this;
     }

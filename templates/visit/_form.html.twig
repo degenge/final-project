@@ -1,4 +1,50 @@
+
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+<div class="form-row" >
+
+    <div class="form-group col-6" >
+        {{ form_label(form.country) }}
+        {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+    </div >
+
+    <div class="form-group col-6" >
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+    </div >
+
+</div >
+
+<div class="form-row" >
+
+    <div class="form-group col-12" >
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div >
+
+</div >
+
+<div class="form-row" >
+
+    <div class="form-group col-6" >
+        {{ form_label(form.dateVisitedFrom) }}
+        {{ form_widget(form.dateVisitedFrom, {'attr': {'class': 'form-control'}}) }}
+    </div >
+
+    <div class="form-group col-6" >
+        {{ form_label(form.dateVisitedTill) }}
+        {{ form_widget(form.dateVisitedTill, {'attr': {'class': 'form-control'}}) }}
+    </div >
+
+</div >
+
+<div class="form-row" >
+
+    <div class="form-group col-12" >
+        <button class="btn btn btn-secondary" >{{ button_label|default('Save') }}</button >
+    </div >
+
+</div >
+
 {{ form_end(form) }}

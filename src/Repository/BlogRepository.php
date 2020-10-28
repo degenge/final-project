@@ -19,6 +19,23 @@ class BlogRepository extends ServiceEntityRepository
         parent::__construct($registry, Blog::class);
     }
 
+    public function findAllByVisitId(string $visitId): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT v.title AS visit, b.title, b.description, b.date_blogged FROM blog AS b 
+        INNER JOIN visit AS v ON v.id = b.visit_id
+        WHERE b.visit_id = :visitId
+        ORDER BY b.date_blogged ASC
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['visitId' => $visitId]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAllAssociative();
+    }
+
     // /**
     //  * @return Blog[] Returns an array of Blog objects
     //  */

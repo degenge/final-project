@@ -21,7 +21,7 @@ class CountryController extends AbstractController
     private CountryRepository $countryRepository;
 
     /**
-     * Style Controller constructor.
+     * Country Controller constructor.
      * @param CountryRepository $countryRepository
      */
     public function __construct(CountryRepository $countryRepository)
@@ -68,6 +68,8 @@ class CountryController extends AbstractController
     public function new(Request $request): Response
     {
         $country = new Country();
+        $country->setDateInsert(new \DateTime());
+
         $form    = $this->createForm(CountryType::class, $country);
         $form->handleRequest($request);
 

@@ -18,7 +18,6 @@ class BlogType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('dateBlogged')
-            ->add('dateInsert')
             ->add('visit', EntityType::class, [
                 'class'         => Visit::class,
                 'query_builder' => function (EntityRepository $er) {

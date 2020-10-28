@@ -14,7 +14,6 @@ class CountryType extends AbstractType
         $builder
             ->add('code')
             ->add('name')
-            ->add('dateInsert')
         ;
     }
 
