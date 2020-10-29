@@ -40,14 +40,13 @@ class VisitController extends AbstractController
     }
 
     /**
-     * @Route("/api/{countryCode}", name="visit_api_index", methods={"GET"})
-     * @param string $countryCode
+     * @Route("/api", name="visit_api_index", methods={"GET"})
      * @param Request $request
      * @return JsonResponse
      */
-    public function api_index(string $countryCode, Request $request): JsonResponse
+    public function api_index(Request $request): JsonResponse
     {
-        $visits = $this->visitRepository->findAllByCountryCode($countryCode);
+        $visits = $this->visitRepository->findAllWithCountryCode();
         // TODO: check if could be converted to visits
 //        $data   = [];
 //
@@ -100,6 +99,30 @@ class VisitController extends AbstractController
         return $this->render('visit/show.html.twig', [
             'visit' => $visit,
         ]);
+    }
+
+    /**
+     * @Route("/api/{countryCode}", name="visit_api_show", methods={"GET"})
+     * @param string $countryCode
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function api_show(string $countryCode, Request $request): JsonResponse
+    {
+        $visits = $this->visitRepository->findAllByCountryCode($countryCode);
+        // TODO: check if could be converted to visits
+//        $data   = [];
+//
+//        foreach ($visits as $visit) {
+//            $data[] = [
+//                'id'              => $visit->getId(),
+//                'title'           => $visit->getTitle(),
+//                'description'     => $visit->getDescription(),
+//                'dateVisitedFrom' => $visit->getDateVisitedFrom(),
+//                'dateVisitedTill' => $visit->getDateVisitedTill(),
+//            ];
+//        }
+        return new JsonResponse($visits, Response::HTTP_OK);
     }
 
     /**

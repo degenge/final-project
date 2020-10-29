@@ -19,6 +19,21 @@ class VisitRepository extends ServiceEntityRepository
         parent::__construct($registry, Visit::class);
     }
 
+    public function findAllWithCountryCode(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT v.id, c.code FROM visit AS v 
+        INNER JOIN country AS c ON c.id = v.country_id
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAllAssociative();
+    }
+
     public function findAllByCountryCode(string $countryCode): array
     {
         $conn = $this->getEntityManager()->getConnection();
