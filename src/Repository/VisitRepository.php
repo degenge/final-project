@@ -24,7 +24,7 @@ class VisitRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-        SELECT v.id, c.code FROM visit AS v 
+        SELECT DISTINCT c.code FROM visit AS v 
         INNER JOIN country AS c ON c.id = v.country_id
         ';
         $stmt = $conn->prepare($sql);

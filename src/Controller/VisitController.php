@@ -47,19 +47,13 @@ class VisitController extends AbstractController
     public function api_index(Request $request): JsonResponse
     {
         $visits = $this->visitRepository->findAllWithCountryCode();
-        // TODO: check if could be converted to visits
-//        $data   = [];
-//
-//        foreach ($visits as $visit) {
-//            $data[] = [
-//                'id'              => $visit->getId(),
-//                'title'           => $visit->getTitle(),
-//                'description'     => $visit->getDescription(),
-//                'dateVisitedFrom' => $visit->getDateVisitedFrom(),
-//                'dateVisitedTill' => $visit->getDateVisitedTill(),
-//            ];
-//        }
-        return new JsonResponse($visits, Response::HTTP_OK);
+        $data = [];
+
+        foreach ($visits as $visit) {
+            $data[strtoupper($visit['code'])] = 0;
+        }
+
+        return new JsonResponse($data, Response::HTTP_OK);
     }
 
     /**
