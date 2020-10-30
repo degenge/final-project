@@ -2,10 +2,15 @@
 
 {% block title %}New Country{% endblock %}
 
+{% block page_title %}
+    <div class="col-10" >
+        <h2 class="text-dark" >Create new Country</h2 >
+    </div >
+    <div class="col-2 text-right" >
+        <a href="{{ path('country_index') }}" class="btn btn-secondary d-inline-block align-middle" >Back to list</a >
+    </div >
+{% endblock %}
+
 {% block body %}
-    <h1>Create new Country</h1>
-
     {{ include('country/_form.html.twig') }}
-
-    <a href="{{ path('country_index') }}">back to list</a>
 {% endblock %}

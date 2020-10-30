@@ -23,7 +23,11 @@ class VisitType extends AbstractType
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker'],
             ])
-            ->add('dateVisitedTill')
+            ->add('dateVisitedTill', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['class' => 'js-datepicker'],
+            ])
             ->add('country', EntityType::class, [
                 'class'         => Country::class,
                 'query_builder' => function (EntityRepository $er) {

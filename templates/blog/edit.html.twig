@@ -2,12 +2,16 @@
 
 {% block title %}Edit Blog{% endblock %}
 
+{% block page_title %}
+    <div class="col-10" >
+        <h2 class="text-dark" >Edit Blog</h2 >
+    </div >
+    <div class="col-2 text-right" >
+        <a href="{{ path('blog_index') }}" class="btn btn-secondary d-inline-block align-middle" >Back to list</a >
+    </div >
+{% endblock %}
+
 {% block body %}
-    <h1>Edit Blog</h1>
-
     {{ include('blog/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('blog_index') }}">back to list</a>
-
     {{ include('blog/_delete_form.html.twig') }}
 {% endblock %}

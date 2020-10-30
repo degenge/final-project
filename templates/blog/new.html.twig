@@ -2,10 +2,15 @@
 
 {% block title %}New Blog{% endblock %}
 
+{% block page_title %}
+    <div class="col-10" >
+        <h2 class="text-dark" >Create new Blog</h2 >
+    </div >
+    <div class="col-2 text-right" >
+        <a href="{{ path('blog_index') }}" class="btn btn-secondary d-inline-block align-middle" >Back to list</a >
+    </div >
+{% endblock %}
+
 {% block body %}
-    <h1>Create new Blog</h1>
-
     {{ include('blog/_form.html.twig') }}
-
-    <a href="{{ path('blog_index') }}">back to list</a>
 {% endblock %}

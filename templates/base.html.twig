@@ -15,8 +15,7 @@
 
 </head >
 <body >
-{{ app.request.get('_route')|trim == 'visit_index' ? '<span class="sr-only" >(current)</span >' }}
-{{ app.request.get('_route') }}
+
 <!-- Image and text -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
     <a class="navbar-brand" href="#" >Travel Keep - API</a >
@@ -27,17 +26,17 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02" >
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
-            <li class="nav-item active" >
-                <a class="nav-link" href="#" >Home <span class="sr-only" >(current)</span ></a >
+            <li class="nav-item " >
+                <a class="nav-link" href="#" >Home</a >
             </li >
-            <li class="nav-item" >
+            <li class="nav-item {{ app.request.get('_route') == 'visit_index' ? 'active' }}" >
                 <a class="nav-link"
-                   href="{{ path('visit_index') }}" >Visit {{ app.request.get('_route') == 'visit_index' ? '<span class="sr-only" >(current)</span >' }}</a >
+                   href="{{ path('visit_index') }}" >Visit</a >
             </li >
-            <li class="nav-item" >
+            <li class="nav-item {{ app.request.get('_route') == 'blog_index' ? 'active' }}" >
                 <a class="nav-link" href="{{ path('blog_index') }}" >Blog</a >
             </li >
-            <li class="nav-item" >
+            <li class="nav-item {{ app.request.get('_route') == 'country_index' ? 'active' }}" >
                 <a class="nav-link" href="{{ path('country_index') }}" >Country</a >
             </li >
         </ul >
@@ -71,7 +70,6 @@
 
     <script >
         $(document).ready(function () {
-            alert('test');
             $('.js-datepicker').datepicker({
                 format: 'yyyy-mm-dd'
             });

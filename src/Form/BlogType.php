@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class BlogType extends AbstractType
 {
@@ -17,7 +18,11 @@ class BlogType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('dateBlogged')
+            ->add('dateBlogged', DateType::class, [
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['class' => 'js-datepicker'],
+            ])
             ->add('visit', EntityType::class, [
                 'class'         => Visit::class,
                 'query_builder' => function (EntityRepository $er) {
